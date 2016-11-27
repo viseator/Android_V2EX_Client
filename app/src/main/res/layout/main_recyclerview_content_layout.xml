@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="4dp"
+        android:layout_marginTop="10dp">
+
+
+        <RelativeLayout
+            android:layout_marginTop="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/content_logo"
+                tools:src="@drawable/programmer"
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
+            <TextView
+                tools:text="来自节点：程序员"
+                android:id="@+id/content_source"
+                android:layout_width="wrap_content"
+                android:layout_height="25dp"
+                android:layout_toEndOf="@+id/content_logo"
+                android:layout_alignBottom="@+id/content_logo"
+                android:layout_marginStart="5dp"
+                android:gravity="center"
+                android:textSize="15sp"
+                android:textColor="@color/zhihuwordgray"
+                />
+
+            <TextView
+                android:id="@+id/content_title"
+                android:layout_marginTop="5dp"
+                android:layout_marginBottom="7dp"
+                tools:text="换个角度看前端：你是怎么应对拧巴的兼容性问题"
+                android:textStyle="bold"
+                android:textSize="17sp"
+                android:textColor="@color/Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:layout_below="@id/content_logo"
+                />
+
+            <TextView
+                android:id="@+id/content"
+                tools:text="在前端发展得如火如荼的今天，在现在各种 MVVM 前端框架被火热推崇的今天，大家是怎么应对浏览器兼容性问题。很多国内的公司还是规定要求兼容 IE7\8 ，甚至还有 IE6 ，看到很多公司 JS 为主的项目还是在用 JQuery 为主力军。大家是否考虑过类似的问题，别小看这两个问题，这两个问题会甚至影响程序员选择的发展方向。大部分人在一想到前端要面对各种浏览器兼容问题，还要处理自适应多个平台的布局就感觉茫然，会因为此而干脆直接转到后端开发的大有人在。在 2016 的当下大家是否还是同样的感觉前端兼容性是个让人头痛的问题，欢迎吐槽，最好说说你的应对策略。"
+                android:maxLines="3"
+                android:textSize="15sp"
+                android:textColor="@color/Black"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content_title"
+                />
+
+            <TextView
+                android:id="@+id/content_reply"
+                android:layout_marginTop="7dp"
+                tools:text="66"
+                android:textSize="15sp"
+                android:textColor="@color/zhihuwordgray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/content"
+                android:layout_marginBottom="13dp"
+                />
+
+            <TextView
+                android:text="@string/reply"
+                android:textSize="15sp"
+                android:textColor="@color/zhihuwordgray"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/content_reply"
+                android:layout_alignBottom="@+id/content_reply"
+                android:layout_marginStart="2dp"
+
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+
+</RelativeLayout>

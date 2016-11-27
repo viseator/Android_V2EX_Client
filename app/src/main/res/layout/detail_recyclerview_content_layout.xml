@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.CardView
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:elevation="2dp"
+        app:cardCornerRadius="2dp"
+        >
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            >
+            <ImageView
+                android:id="@+id/detail_recyclerview_avatar"
+
+                tools:src="@drawable/programmer"
+                android:layout_width="35dp"
+                android:layout_height="35dp" />
+
+            <TextView
+                tools:text="吴迪"
+                android:textSize="16sp"
+                android:textColor="@color/Black"
+                android:id="@+id/detail_user"
+                android:layout_marginStart="10dp"
+                android:layout_alignTop="@+id/detail_recyclerview_avatar"
+                android:layout_width="wrap_content"
+                android:layout_height="21dp"
+                android:layout_marginTop="-3dp"
+                android:gravity="center"
+                android:layout_toEndOf="@+id/detail_recyclerview_avatar"
+                />
+
+            <TextView
+                tools:text="第2楼"
+                android:textSize="10sp"
+                android:id="@+id/detail_num"
+                android:layout_marginStart="10dp"
+                android:layout_width="wrap_content"
+                android:layout_height="17dp"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@+id/detail_recyclerview_avatar"
+                android:layout_below="@+id/detail_user"
+                />
+
+            <TextView
+                tools:text="5分钟前"
+                android:textSize="10sp"
+                android:id="@+id/detail_time"
+                android:layout_marginStart="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="17dp"
+                android:gravity="center_vertical"
+                android:layout_toEndOf="@+id/detail_num"
+                android:layout_below="@+id/detail_user"
+                />
+
+            <View
+                android:visibility="invisible"
+                android:id="@+id/detail_sepline"
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:layout_below="@id/detail_recyclerview_avatar"
+                android:layout_marginTop="10dp"
+                android:background="@color/Black"
+                />
+
+            <TextView
+                tools:text="部分老员工 在指定时间内无法完成任务 我已经帮他们跟客户打交道 延期了三次了 而且每次都是我在主动打交道 我们上班没有限制时间 上午 9:30 下午 5:30 基本就走了 晚上呢 他们三个人就一起出去网吧游戏 其实可以理解 因为私人时间我们也不能管 但是公司项目已经延期了三四个月了 他们毫无敬业之心 最关键的部分 一个员工截图中无意中 看到他们吐槽公司各种不好 可 这个月才给他们涨了薪水 想让他们努力赶一下进度 双十一给的任务奖金是 5000 然而他们是金钱为粪土 公司新来的员工都很努力 交流技术 形成鲜明对比"
+                android:textColor="@color/Black"
+                android:textSize="18sp"
+                android:gravity="center_vertical"
+                android:id="@+id/detail_content"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/detail_sepline"
+                />
+
+            <View
+                android:id="@+id/detail_sepline_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="1px"
+                android:layout_below="@id/detail_content"
+                android:layout_marginTop="15dp"
+                android:background="@color/zhihuwordgray"
+                />
+
+        </RelativeLayout>
+
+    </android.support.v7.widget.CardView>
+</RelativeLayout>
