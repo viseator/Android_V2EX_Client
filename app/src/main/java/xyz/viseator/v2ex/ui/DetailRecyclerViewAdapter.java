@@ -75,6 +75,7 @@ public class DetailRecyclerViewAdapter extends
                 text = Html.fromHtml(detailContents.get(position).getContent(), this, null);
             }
             holder.contentTextView.setText(text);
+            holder.contentTextView.setPadding(0, 0, 0, 0);
         } else {
             holder.contentTextView.setText(detailContents.get(position).getContent());
             holder.contentTextView.setPadding(dpToPx(45), 0, 0, 0);
