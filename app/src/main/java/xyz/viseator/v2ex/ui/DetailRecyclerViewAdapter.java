@@ -2,7 +2,14 @@ package xyz.viseator.v2ex.ui;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,16 +27,19 @@ import xyz.viseator.v2ex.http.GetAvatarTask;
  */
 
 public class DetailRecyclerViewAdapter extends
-        RecyclerView.Adapter<DetailRecyclerViewAdapter.ViewHolder> {
+        RecyclerView.Adapter<DetailRecyclerViewAdapter.ViewHolder>
+        implements Html.ImageGetter {
 
+    private static final String TAG = "wudi DetailAdapter";
     private Context context;
     private List<DetailContent> detailContents;
-
+    private Bitmap contentImage;
 
     public DetailRecyclerViewAdapter(Context context, List<DetailContent> detailContents) {
         this.context = context;
         this.detailContents = detailContents;
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         ImageView avatarImageView;
@@ -56,8 +66,15 @@ public class DetailRecyclerViewAdapter extends
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        if (position == 0) {
-            holder.contentTextView.setText(detailContents.get(position).getContent());
+        if (position == 0 ) {
+
+            CharSequence text;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
+                text = Html.fromHtml(detailContents.get(position).getContent(), Html.FROM_HTML_MODE_COMPACT, this, null);
+            } else {
+                text = Html.fromHtml(detailContents.get(position).getContent(), this, null);
+            }
+            holder.contentTextView.setText(text);
         } else {
             holder.contentTextView.setText(detailContents.get(position).getContent());
             holder.contentTextView.setPadding(dpToPx(45), 0, 0, 0);
@@ -85,5 +102,28 @@ public class DetailRecyclerViewAdapter extends
     public void setDetailContents(List<DetailContent> detailContents) {
         this.detailContents = detailContents;
     }
+
+    @Override
+    public Drawable getDrawable(String s) {
+        new GetAvatarTask(new GetAvatarTask.AsyncResponse() {
+            @Override
+            public void processFinish(Bitmap bitmap) {
+                contentImage = bitmap;
+                float scaleSize = ((float) context.getResources().getDisplayMetrics().widthPixels) /
+                        contentImage.getWidth();
+                Log.d(TAG, String.valueOf(context.getResources().getDisplayMetrics().widthPixels));
+                Matrix matrix = new Matrix();
+                matrix.postScale(scaleSize, scaleSize);
+                contentImage = Bitmap.createBitmap(contentImage, 0, 0, contentImage.getWidth(),
+                        contentImage.getHeight(), matrix, true);
+
+            }
+        }).execute(s);
+
+        Drawable drawable = new BitmapDrawable(context.getResources(), contentImage);
+        drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+        return drawable;
+    }
+
 
 }
